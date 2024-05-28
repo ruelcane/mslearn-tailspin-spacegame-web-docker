@@ -4,7 +4,6 @@ trigger:
 variables:
   webRepository: 'web'
   tag: '$(Build.BuildId)'
-
 stages:  
 - stage: 'Build'
   displayName: 'Build and push'
@@ -13,11 +12,6 @@ stages:
     displayName: 'Build job'
     pool:
       vmImage: 'ubuntu-20.04'
-
-    variables:
-      wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
-      dotnetSdkVersion: '6.x'
-
     steps:
     - task: Docker@2
       displayName: 'Build and push the image to container registry'
@@ -36,8 +30,7 @@ stages:
   - job: Deploy
     displayName: 'Deploy job'
     pool:
-      vmImage: 'ubuntu-20.04'
-    
+      vmImage: 'ubuntu-20.04'    
     variables:
     - group: Release
     steps:
