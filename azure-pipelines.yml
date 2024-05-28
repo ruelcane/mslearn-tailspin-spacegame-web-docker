@@ -29,8 +29,6 @@ stages:
         buildContext: '$(Build.Repository.LocalPath)'
         tags:
           $(tag) 
-
-
 - stage: 'Deploy'
   displayName: 'Deploy the container'
   dependsOn: Build
